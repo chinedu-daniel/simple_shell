@@ -1,10 +1,11 @@
 #include "shell.h"
 
-/*
- * main - file to invoke the shell prompt
+/**
+ * main - This is the maain function where the execution of the program starts.
+ * it is the entry point of the program
+ * void: Empty string
  * Return: (0)
  */
-
 int main(void)
 {
 	char command[123];
