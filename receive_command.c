@@ -7,7 +7,7 @@
 
 void receive_command(char *command, size_t size)
 {
-	if (fgets(command, size, stdin) == NULL)
+	if (getline(&command, &size, stdin) == -1)
 	{
 		if (feof(stdin))
 		{
@@ -20,5 +20,7 @@ void receive_command(char *command, size_t size)
 			exit(EXIT_FAILURE);
 		}
 	}
+	free(command);
+
 	command [strcspn(command, "\n")] = '\0';
 }

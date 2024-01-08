@@ -5,7 +5,7 @@
  * command: a string to input the command in the prompt
  */
 
-void perform_command(const char *command)
+void perform_command(const char *command, char *const args[])
 {
 	pid_t child_pid = fork();
 
@@ -16,8 +16,8 @@ void perform_command(const char *command)
 	}
 	else if (child_pid == 0)
 	{
-		execlp(command, command, (char *) NULL);
-		perror("execlp");
+		execve(command, args, NULL);
+		perror("Execution failed");
 		exit(EXIT_FAILURE);
 	}
 	else
