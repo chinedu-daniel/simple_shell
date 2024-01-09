@@ -15,6 +15,16 @@ int main(void)
 		show_prompt();
 		receive_command(command, sizeof(command));
 		perform_command(command);
+		command_prompt(
+	}
+
+	char str[] = "";
+	char *token = strtok(str, ",");
+
+	while (token != NULL)
+	{
+		edu_display("\n");
+		token = strtok(NULL, ",");
 	}
 
 	return (0);
