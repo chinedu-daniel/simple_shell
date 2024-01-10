@@ -7,5 +7,5 @@
 
 void show_prompt(void)
 {
-	edu_display("edu_shell$ ");
+	edu_display("(edu_shell)>$ ");
 }

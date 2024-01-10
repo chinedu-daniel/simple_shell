@@ -12,15 +12,13 @@ void receive_command(char *command, size_t size)
 		if (feof(stdin))
 		{
 			edu_display("\n");
-			exit(EXIT_SUCCESS);
+			exit (EXIT_SUCCESS);
 		}
 		else
 		{
-			edu_display("Error while reading input. \n");
-			exit(EXIT_FAILURE);
+			edu_display("Error while reading input\n");
+			exit (EXIT_FAILURE);
 		}
 	}
-	free(command);
-
-	command [strcspn(command, "\n")] = '\0';
+	command[strcspn(command, "\n")] = '\0';
 }

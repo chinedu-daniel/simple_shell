@@ -5,19 +5,34 @@
  * command: a string to input the command in the prompt
  */
 
-void perform_command(const char *command, char *const args[])
+void perform_command(char *command)
 {
 	pid_t child_pid = fork();
 
 	if (child_pid == -1)
 	{
 		perror("fork");
-		exit(EXIT_FAILURE);
+		exit (EXIT_FAILURE);
 	}
 	else if (child_pid == 0)
 	{
+		char **args = (char **)malloc(sizeof(char *) * 4);
+
+		if (args == NULL)
+		{
+			perror("malloc");
+			exit(EXIT_FAILURE);
+		}
+
+		args[0] = (char *)command;
+		args[1] = "arg1";
+		args[2] = "arg2";
+		args[3] = NULL;
+
 		execve(command, args, NULL);
-		perror("Execution failed");
+
+		perror("execve");
+		free(args);
 		exit(EXIT_FAILURE);
 	}
 	else
