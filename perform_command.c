@@ -5,9 +5,24 @@
  * command: a string to input the command in the prompt
  */
 
+int command_exists(const char *command);
+
+int command_exists(const char *command)
+{
+	return access(command, X_OK) == 0;
+}
+
 void perform_command(char *command)
 {
-	pid_t child_pid = fork();
+	pid_t child_pid;
+
+	if (!command_exists(command))
+	{
+		printf("Command '%s' does not exist\n", command);
+		return;
+	}
+
+	child_pid = fork();
 
 	if (child_pid == -1)
 	{
