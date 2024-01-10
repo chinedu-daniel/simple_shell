@@ -8,6 +8,10 @@
  */
 int main(void)
 {
+	char str[] = "This is a string";
+	const char delim[] = ",";
+	char *token = strtok(str, delim);
+
 	char command[123];
 
 	while (1)
@@ -15,6 +19,13 @@ int main(void)
 		show_prompt();
 		receive_command(command, sizeof(command));
 		perform_command(command);
+	}
+
+	while (token != NULL)
+	{
+		printf("Token: %s\n", token);
+
+		token = strtok(NULL, delim);
 	}
 
 	return (0);
