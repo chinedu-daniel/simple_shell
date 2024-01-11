@@ -16,7 +16,7 @@
  * Prototypes for the simple shell
  */
 
-void edu_display (const char *format);
+void edu_display(const char *format);
 void show_prompt(void);
 void perform_command(char *command);
 void receive_command(char *command, size_t size);

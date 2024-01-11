@@ -1,16 +1,21 @@
 #include "shell.h"
 
-/*
- * perform_command - function to execute the prompt
- * command: a string to input the command in the prompt
+/**
+ * command_exists - to perform a particular command
+ * @command: a string to input the command in the prompt
+ * Return: 1 if the command exists, 0 otherwise
  */
-
-int command_exists(const char *command);
 
 int command_exists(const char *command)
 {
-	return access(command, X_OK) == 0;
+	return (access(command, X_OK) == 0);
 }
+
+/**
+ * perform_command - function to execute the prompt
+ * @command: a string to input the command in the prompt
+ * Return: 1 if command exists, otherwise 0
+ */
 
 void perform_command(char *command)
 {
@@ -27,7 +32,7 @@ void perform_command(char *command)
 	if (child_pid == -1)
 	{
 		perror("fork");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	else if (child_pid == 0)
 	{
